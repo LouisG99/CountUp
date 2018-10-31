@@ -232,6 +232,12 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     @IBAction func StepperOn(_ sender: UIStepper) {
         changeCount(sender)
     }
+    
+    @IBAction func DeleteCounter() {
+        print("should delete")
+        deleteCounterHelper()
+    }
+    
     @IBOutlet weak var limitField: UITextField!
     
     // Core Data Vars
@@ -362,6 +368,7 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
         }
         // storing changes
         saveData()
+        checkCompleted()
     }
 
     func saveData() {
@@ -385,6 +392,24 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
             try context?.save()
         } catch {
             print("Failed saving")
+        }
+    }
+    
+    func deleteCounterHelper() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            var result = try context?.fetch(request) as! [NSManagedObject]
+            let currCounter = result[index]
+            context?.delete(currCounter)
+            
+            let VC = self.storyboard?.instantiateViewController(withIdentifier: "firstScreen") as! EntryScreenController
+            self.present(VC, animated: true, completion: nil)
+            
+        }
+        catch {
+            print("Failed to delete")
         }
     }
     

@@ -190,6 +190,21 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="gR2-zv-OnO"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="G9b-eC-nuT"/>
+                                    <barButtonItem style="plain" id="Nuf-SK-2mM" userLabel="Delete">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0gJ-43-DuP">
+                                            <rect key="frame" x="102" y="5.5" width="116" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Delete Counter">
+                                                <color key="titleColor" red="0.80792487157534243" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="DeleteCounter" destination="y9M-lB-fUY" eventType="touchUpInside" id="ZzU-e7-aYI"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="QkJ-eE-zOZ"/>
                                 </items>
                             </toolbar>
                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="eXX-Fx-G96" userLabel="Picker Increment">
