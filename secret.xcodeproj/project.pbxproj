@@ -14,6 +14,7 @@
 		B3B8C453213595040003950A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B8C451213595040003950A /* LaunchScreen.storyboard */; };
 		B3B8C45E213595040003950A /* secretTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8C45D213595040003950A /* secretTests.swift */; };
 		B3B8C469213595040003950A /* secretUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8C468213595040003950A /* secretUITests.swift */; };
+		B3FF87AC2136EA2500E64DB5 /* python_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FF87AB2136EA2500E64DB5 /* python_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B3B8C464213595040003950A /* secretUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = secretUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B8C468213595040003950A /* secretUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secretUITests.swift; sourceTree = "<group>"; };
 		B3B8C46A213595040003950A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3FF87AB2136EA2500E64DB5 /* python_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = python_logo.png; path = "../../Personal Website/images/python_logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		B3B8C447213595040003950A /* secret */ = {
 			isa = PBXGroup;
 			children = (
+				B3FF87AB2136EA2500E64DB5 /* python_logo.png */,
 				B3B8C448213595040003950A /* AppDelegate.swift */,
 				B3B8C44A213595040003950A /* ViewController.swift */,
 				B3B8C44C213595040003950A /* Main.storyboard */,
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3FF87AC2136EA2500E64DB5 /* python_logo.png in Resources */,
 				B3B8C453213595040003950A /* LaunchScreen.storyboard in Resources */,
 				B3B8C450213595040003950A /* Assets.xcassets in Resources */,
 				B3B8C44E213595040003950A /* Main.storyboard in Resources */,
