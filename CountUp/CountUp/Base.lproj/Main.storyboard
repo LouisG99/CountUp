@@ -85,14 +85,9 @@
                                     <constraint firstAttribute="height" constant="44" id="6zf-bB-KPU"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="TempLink" id="i5v-Ba-hN7">
-                                        <connections>
-                                            <segue destination="y9M-lB-fUY" kind="show" id="DpD-SI-Nzf"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" id="COT-nf-roJ">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MeV-Fh-lxc">
-                                            <rect key="frame" x="101" y="7" width="90" height="30"/>
+                                            <rect key="frame" x="16" y="7" width="288" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="New Counter"/>
                                             <connections>
@@ -205,6 +200,11 @@
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="QkJ-eE-zOZ"/>
+                                    <barButtonItem title="Alarm" id="JFR-ML-YZU">
+                                        <connections>
+                                            <segue destination="Wr5-AF-ec8" kind="show" id="1sc-2v-1On"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="eXX-Fx-G96" userLabel="Picker Increment">
@@ -285,8 +285,53 @@
             </objects>
             <point key="canvasLocation" x="948.75" y="32.74647887323944"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="E4k-YS-d2h">
+            <objects>
+                <viewController id="Wr5-AF-ec8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="98N-8T-yFR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkL-Z1-rdM">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="4df-pl-jRV">
+                                        <connections>
+                                            <segue destination="y9M-lB-fUY" kind="show" id="114-Xz-EfZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CountUp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABP-uH-TGe" userLabel="Logo">
+                                <rect key="frame" x="0.0" y="20" width="320" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="CL6-sb-3Co"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.99404761900000005" green="0.9880952381" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ABP-uH-TGe" secondAttribute="trailing" id="9Zo-8w-Gz6"/>
+                            <constraint firstItem="ABP-uH-TGe" firstAttribute="top" secondItem="yrR-me-VXd" secondAttribute="top" id="HSI-J0-K94"/>
+                            <constraint firstItem="ABP-uH-TGe" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="Nxc-tb-iYV"/>
+                            <constraint firstItem="HkL-Z1-rdM" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="RLc-Cg-lXn"/>
+                            <constraint firstItem="HkL-Z1-rdM" firstAttribute="bottom" secondItem="yrR-me-VXd" secondAttribute="bottom" id="cJe-gE-NWN"/>
+                            <constraint firstItem="HkL-Z1-rdM" firstAttribute="trailing" secondItem="yrR-me-VXd" secondAttribute="trailing" id="pWo-7n-2nA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yrR-me-VXd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hL1-ZW-Ufd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1790" y="36"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FBg-PO-vk5"/>
+        <segue reference="114-Xz-EfZ"/>
     </inferredMetricsTieBreakers>
 </document>

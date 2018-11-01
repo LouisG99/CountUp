@@ -48,10 +48,8 @@ class EntryScreenController: UIViewController {
         
         if count==0 {
             counterName = "Counter Example"
-            print("HIT in NewCounterHelper")
         }
         else {
-//            counterName = "New Counter #" + String(Int(count_views+1.0))
             counterName = "New Counter #" + String(Int(count_views))
         }
         
@@ -122,9 +120,11 @@ class EntryScreenController: UIViewController {
         see_button.titleLabel?.font =  .systemFont(ofSize: 15.0)
         see_button.addTarget(self, action: #selector(self.counterTouched), for: .touchUpInside)
         see_button.tag = index
-
+        if limReached {
+            see_button.setTitleColor(.green, for: .normal)
+        }
         // create constraints
-        
+    
         let leadingLabel = NSLayoutConstraint(item: label, attribute: .leading, relatedBy: .equal, toItem: label_constr, attribute: .leading, multiplier: 1, constant: 0)
         let verticalLabel = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: label_constr, attribute: .centerY, multiplier: 1, constant: subViewHeight * CGFloat(index))
         
