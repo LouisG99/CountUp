@@ -240,6 +240,14 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     
     @IBOutlet weak var limitField: UITextField!
     
+    
+    @IBAction func accessSettings(_ sender: Any) {
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "settings screen") as! SettingsController
+        
+        VC.index = self.index
+        self.present(VC, animated: true, completion: nil)
+    }
+    
     // Core Data Vars
     var appDelegate : AppDelegate?
     var context : NSManagedObjectContext?
@@ -447,5 +455,22 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
         // Hides the keyboard.
         textField.resignFirstResponder()
         return true
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+// MARK: Settings Screen
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+class SettingsController: UIViewController {
+    var index: Int = 0
+    
+    @IBOutlet weak var currentSettings: UILabel!
+    @IBOutlet weak var settingsScroll: UIPickerView!
+    
+    
+    override func viewDidLoad() {
+        print(index)
     }
 }
