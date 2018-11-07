@@ -463,14 +463,47 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
 // MARK: Settings Screen
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
-class SettingsController: UIViewController {
+class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     var index: Int = 0
     
     @IBOutlet weak var currentSettings: UILabel!
     @IBOutlet weak var settingsScroll: UIPickerView!
-    
+//    var pickerData: [[String]] = []
+    var freq = ["monthly", "weekly", "monthly"]
+    var hour = [String()]
+    var min = [String()]
+    var pickerData: [[String]] = []
     
     override func viewDidLoad() {
         print(index)
+//        pickerData.append(["Date2", "time2", "freq2"])
+        for i in 0...23 {
+            hour.append(String(i))
+        }
+        for i in 0...59 {
+            min.append(String(i))
+        }
+        pickerData = [freq, hour, min]
+        settingsScroll.dataSource = self
+        settingsScroll.delegate = self
+    }
+    
+    // for scroll view
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData[component].count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        print(pickerData[row])
+        return pickerData[component][row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRowInComponent row: Int, inComponent component: Int) {
+        // This method is triggered whenever the user makes a change to the picker selection.
+        // The parameter named row and component represents what was selected.
     }
 }
