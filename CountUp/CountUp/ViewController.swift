@@ -59,6 +59,9 @@ class EntryScreenController: UIViewController {
         newUser.setValue(15, forKey: "limit")
         newUser.setValue(1, forKey: "increment")
         newUser.setValue(0, forKey: "value")
+        newUser.setValue(8, forKey: "notif_hour")
+        newUser.setValue(0, forKey: "notif_min")
+        newUser.setValue("Daily", forKey: "notif_freq")
         
         do {
             try context?.save()
@@ -469,14 +472,42 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var currentSettings: UILabel!
     @IBOutlet weak var settingsScroll: UIPickerView!
 //    var pickerData: [[String]] = []
-    var freq = ["monthly", "weekly", "monthly"]
+    var freq = ["Daily", "Weekly", "Monthly"]
     var hour = [String()]
     var min = [String()]
     var pickerData: [[String]] = []
     
+    var context : NSManagedObjectContext?
+    var entity : NSEntityDescription?
+    var appDelegate : AppDelegate?
+    
     override func viewDidLoad() {
         print(index)
-//        pickerData.append(["Date2", "time2", "freq2"])
+        
+        // loading current settings
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
+        context = appDelegate?.persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "Counters", in: (context ?? nil)!)
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
+        request.returnsObjectsAsFaults = false
+        do {
+            var result = try context?.fetch(request) as! [NSManagedObject]
+            let savedVar = result[index]
+            
+            let freq = savedVar.value(forKey: "notif_freq") as! String
+            let hour = (savedVar.value(forKey: "notif_hour") as! Int)
+            let min = (savedVar.value(forKey: "notif_min") as! Int)
+
+            let time = freq + " reminders at " + time_helper(hour: hour, min: min)
+            
+            currentSettings.text = time
+//            settingsScroll.selectRow(incrFromData-1, inComponent: 0, animated: true)
+        }
+        catch {
+            print("Error while initializing display of couter")
+        }
+        
         for i in 0...23 {
             hour.append(String(i))
         }
@@ -488,6 +519,52 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         settingsScroll.delegate = self
     }
     
+    func updateDisplaySet() {
+        
+    }
+    func time_helper(hour: Int, min: Int) -> String {
+        var hr = String(hour)
+        var minute = String(min%12)
+        var suffix = "am"
+        
+        if (hour<10) {
+            hr = "0"+hr
+        } else if (hour==0) {
+            hr = "12"
+        }
+        if (min%12 < 10) {
+            minute = "0"+minute
+        }
+
+        if (hour>12) {
+           suffix = "pm"
+        }
+        
+        return hr+":"+minute+" "+suffix
+    }
+    
+    func saveData() {
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
+//        request.returnsObjectsAsFaults = false
+//
+//        do {
+//            var result = try context?.fetch(request) as! [NSManagedObject]
+//            let savedVar = result[index]
+//            savedVar.setValue(settingsScroll[settingsScroll.selectedRowInComponent(0)], forKey: "notif_freq")
+//            savedVar.setValue(settingsScroll[pickerView.selectedRowInComponent(1)], forKey: "notif_hour")
+//            savedVar.setValue(settingsScroll[pickerView.selectedRowInComponent(2)], forKey: "notif_min")
+//
+//        }
+//        catch {
+//            print("Probably indexing problem with saveData in counter screen")
+//        }
+//
+//        do {
+//            try context?.save()
+//        } catch {
+//            print("Failed saving")
+//        }
+    }
     // for scroll view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return pickerData.count
@@ -499,6 +576,7 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 //        print(pickerData[row])
+        
         return pickerData[component][row]
     }
     

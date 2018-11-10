@@ -7,10 +7,13 @@
         <attribute name="increment" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notif_freq" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notif_hour" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="notif_min" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="Constants" positionX="-63" positionY="9" width="128" height="30"/>
-        <element name="Counters" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Counters" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
