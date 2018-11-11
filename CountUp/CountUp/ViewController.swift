@@ -63,6 +63,8 @@ class EntryScreenController: UIViewController {
         newUser.setValue(0, forKey: "notif_min")
         newUser.setValue("Daily", forKey: "notif_freq")
         
+//        print("new val: ", newUser.value(forKey: "notif_hour"))
+        
         do {
             try context?.save()
         } catch {
@@ -187,7 +189,6 @@ class EntryScreenController: UIViewController {
         
         do {
             let result = try context?.fetch(request) as! [NSManagedObject]
-//            count_views = CGFloat(result.count+1)
             count_views = CGFloat(result.count)
         } catch {
             print("Catch in countViewsInit()")
@@ -426,7 +427,6 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     
     func updateIncrDisplay() {
         IncrementDisplay.text = "Increment Value: " + String(incrementVal)
-//        print("incr changed")
         // storing changes
         saveData()
     }
@@ -489,25 +489,10 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         context = appDelegate?.persistentContainer.viewContext
         entity = NSEntityDescription.entity(forEntityName: "Counters", in: (context ?? nil)!)
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
-        request.returnsObjectsAsFaults = false
-        do {
-            var result = try context?.fetch(request) as! [NSManagedObject]
-            let savedVar = result[index]
-            
-            let freq = savedVar.value(forKey: "notif_freq") as! String
-            let hour = (savedVar.value(forKey: "notif_hour") as! Int)
-            let min = (savedVar.value(forKey: "notif_min") as! Int)
-
-            let time = freq + " reminders at " + time_helper(hour: hour, min: min)
-            
-            currentSettings.text = time
-//            settingsScroll.selectRow(incrFromData-1, inComponent: 0, animated: true)
-        }
-        catch {
-            print("Error while initializing display of couter")
-        }
+        // NOTE: AJOUTER Selection auto de la bonne row car sinon
+        // select colonne vide --> valeur nil --> bug
         
+        updateDisplaySet(initialize: true)
         for i in 0...23 {
             hour.append(String(i))
         }
@@ -517,11 +502,50 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         pickerData = [freq, hour, min]
         settingsScroll.dataSource = self
         settingsScroll.delegate = self
-    }
-    
-    func updateDisplaySet() {
         
     }
+    
+    @IBAction func backButton() {
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "CounterScreen") as! CounterController
+        
+        VC.index = self.index
+        self.present(VC, animated: true, completion: nil)
+    }
+    
+    func updateDisplaySet(initialize: Bool) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
+        request.returnsObjectsAsFaults = false
+        do {
+            var result = try context?.fetch(request) as! [NSManagedObject]
+            let savedVar = result[index]
+            print(savedVar)
+            
+            let freq = savedVar.value(forKey: "notif_freq") as! String
+            let hour = savedVar.value(forKey: "notif_hour") as! Int
+//            print(hourtest)
+            let min = (savedVar.value(forKey: "notif_min") as! Int)
+            
+//            let hour = 5
+//            let min = 2
+            
+            let time = freq + " reminders at " + time_helper(hour: hour, min: min)
+            
+            currentSettings.text = time
+            
+            
+            var indecesFreq = ["Daily": 0, "Weekly": 1, "Monthly": 3]
+            
+            if initialize {
+                settingsScroll.selectRow(indecesFreq[freq] ?? 0, inComponent: 0, animated: true)
+                settingsScroll.selectRow(hour+1, inComponent: 1, animated: true)
+                settingsScroll.selectRow(min+1, inComponent: 2, animated: true)
+            }
+        }
+        catch {
+            print("Error while initializing display of couter")
+        }
+    }
+    
     func time_helper(hour: Int, min: Int) -> String {
         var hr = String(hour)
         var minute = String(min%12)
@@ -544,27 +568,33 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     func saveData() {
-//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
-//        request.returnsObjectsAsFaults = false
-//
-//        do {
-//            var result = try context?.fetch(request) as! [NSManagedObject]
-//            let savedVar = result[index]
-//            savedVar.setValue(settingsScroll[settingsScroll.selectedRowInComponent(0)], forKey: "notif_freq")
-//            savedVar.setValue(settingsScroll[pickerView.selectedRowInComponent(1)], forKey: "notif_hour")
-//            savedVar.setValue(settingsScroll[pickerView.selectedRowInComponent(2)], forKey: "notif_min")
-//
-//        }
-//        catch {
-//            print("Probably indexing problem with saveData in counter screen")
-//        }
-//
-//        do {
-//            try context?.save()
-//        } catch {
-//            print("Failed saving")
-//        }
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
+        request.returnsObjectsAsFaults = false
+
+        do {
+            var result = try context?.fetch(request) as! [NSManagedObject]
+            
+            let notif_freq = pickerData[0][settingsScroll.selectedRow(inComponent: 0)]
+            let notif_hour = Int(pickerData[1][settingsScroll.selectedRow(inComponent: 1)])
+            let notif_min = Int(pickerData[2][settingsScroll.selectedRow(inComponent: 2)])
+            
+            result[index].setValue(notif_freq, forKey: "notif_freq")
+            result[index].setValue(notif_hour, forKey: "notif_hour")
+            result[index].setValue(notif_min, forKey: "notif_min")
+            
+        }
+        catch {
+            print("Probably indexing problem with saveData in counter screen")
+        }
+
+        do {
+            try context?.save()
+        } catch {
+            print("Failed saving")
+        }
     }
+    
+    
     // for scroll view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return pickerData.count
@@ -575,8 +605,9 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        print(pickerData[row])
         
+        saveData()
+        updateDisplaySet(initialize: false)
         return pickerData[component][row]
     }
     
