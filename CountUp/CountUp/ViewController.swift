@@ -492,7 +492,7 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         // NOTE: AJOUTER Selection auto de la bonne row car sinon
         // select colonne vide --> valeur nil --> bug
         
-        updateDisplaySet(initialize: true)
+        
         for i in 0...23 {
             hour.append(String(i))
         }
@@ -502,6 +502,8 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         pickerData = [freq, hour, min]
         settingsScroll.dataSource = self
         settingsScroll.delegate = self
+        
+        updateDisplaySet(initialize: true)
         
     }
     
@@ -513,36 +515,46 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     func updateDisplaySet(initialize: Bool) {
+        var freq : String = "uninit"
+        var hour: Int = -1
+        var min: Int = -1
+        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         request.returnsObjectsAsFaults = false
         do {
-            var result = try context?.fetch(request) as! [NSManagedObject]
+            var result = try! context?.fetch(request) as! [NSManagedObject]
+            
             let savedVar = result[index]
             print(savedVar)
-            
-            let freq = savedVar.value(forKey: "notif_freq") as! String
-            let hour = savedVar.value(forKey: "notif_hour") as! Int
-//            print(hourtest)
-            let min = (savedVar.value(forKey: "notif_min") as! Int)
-            
-//            let hour = 5
-//            let min = 2
-            
-            let time = freq + " reminders at " + time_helper(hour: hour, min: min)
-            
-            currentSettings.text = time
-            
-            
-            var indecesFreq = ["Daily": 0, "Weekly": 1, "Monthly": 3]
-            
+        
             if initialize {
-                settingsScroll.selectRow(indecesFreq[freq] ?? 0, inComponent: 0, animated: true)
-                settingsScroll.selectRow(hour+1, inComponent: 1, animated: true)
-                settingsScroll.selectRow(min+1, inComponent: 2, animated: true)
+                do {
+                    var result = try context?.fetch(request) as! [NSManagedObject]
+                    let savedVar = result[index]
+                    
+                    freq = savedVar.value(forKey: "notif_freq") as! String
+                    hour = savedVar.value(forKey: "notif_hour") as! Int
+                    min = (savedVar.value(forKey: "notif_min") as! Int)
+                    //            let hour = 5
+                    //            let min = 2
+                    
+                    var indecesFreq = ["Daily": 0, "Weekly": 1, "Monthly": 2]
+                    settingsScroll.selectRow(indecesFreq[freq] ?? 0, inComponent: 0, animated: true)
+                    settingsScroll.selectRow(hour+1, inComponent: 1, animated: true)
+                    settingsScroll.selectRow(min+1, inComponent: 2, animated: true)
+                    
+                }
+                catch {
+                    print("Error while initializing display of couter")
+                }
             }
-        }
-        catch {
-            print("Error while initializing display of couter")
+            else {
+                freq = pickerData[0][settingsScroll.selectedRow(inComponent: 0)]
+                hour = Int(pickerData[1][settingsScroll.selectedRow(inComponent: 1)]) ?? 8
+                min = Int(pickerData[2][settingsScroll.selectedRow(inComponent: 2)]) ?? 0
+            }
+            let time = freq + " reminders at " + time_helper(hour: hour, min: min)
+            currentSettings.text = time
         }
     }
     
@@ -606,8 +618,9 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        saveData()
         updateDisplaySet(initialize: false)
+        saveData()
+//        updateDisplaySet(initialize: false)
         return pickerData[component][row]
     }
     
