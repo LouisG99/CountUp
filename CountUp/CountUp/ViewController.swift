@@ -11,7 +11,11 @@ import CoreData
 
 // figure out:
 
-//      Research notifiaction system
+// TO DO
+// add reset functionality with core data
+// Add method used for picker view in settings screen for
+// coumter screen (picker view not accurate)
+// see creating of accounts with firebase an ios app
 
 
 class EntryScreenController: UIViewController {
