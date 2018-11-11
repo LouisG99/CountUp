@@ -6,14 +6,11 @@
 //  Copyright © 2018 Louis Gouirand. All rights reserved.
 //
 
-// NOTES: PickerView doesn't work properly --> selects wrong row
-
 import UIKit
 import CoreData
 
 // figure out:
-//      Add thing for when COUNT REACHED
-//      Add DELETE feature for deleting counter
+
 //      Research notifiaction system
 
 
@@ -33,8 +30,6 @@ class EntryScreenController: UIViewController {
     
     @IBOutlet weak var CountersScroll: UIScrollView!
     @IBOutlet weak var CounterStack: UIStackView!
-    
-    
     
     @IBAction func NewCounter(_ sender: Any) {
         NewCounterHelper()
@@ -61,8 +56,6 @@ class EntryScreenController: UIViewController {
         newUser.setValue(8, forKey: "notif_hour")
         newUser.setValue(0, forKey: "notif_min")
         newUser.setValue("Daily", forKey: "notif_freq")
-        
-//        print("new val: ", newUser.value(forKey: "notif_hour"))
         
         do {
             try context?.save()
@@ -102,7 +95,6 @@ class EntryScreenController: UIViewController {
         let first_view = CounterStack.subviews[0]
         let label_constr = first_view.subviews[0]
         let button_constr = first_view.subviews[1]
-        
         
         let newView = UIView()
         
@@ -492,8 +484,10 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     @IBAction func doneModifSettings() {
+        updateDisplaySet(initialize: false)
+        saveData()
         settingsScroll.isUserInteractionEnabled = false
-        settingsScroll.backgroundColor = UIColor(displayP3Red: 0.8, green: 0.8, blue: 0.8, alpha: 0.9)
+        settingsScroll.backgroundColor = UIColor(red: CGFloat(0.9), green: CGFloat(0.9), blue: CGFloat(0.9), alpha: 1.0)
         doneButton.isEnabled = false
         modifButton.isEnabled = true
     }
@@ -505,7 +499,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         context = appDelegate?.persistentContainer.viewContext
         entity = NSEntityDescription.entity(forEntityName: "Counters", in: (context ?? nil)!)
-        
         
         for i in 0...23 {
             hour.append(String(i))
@@ -522,7 +515,7 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         
         // init PickerView state
         settingsScroll.isUserInteractionEnabled = false
-        settingsScroll.backgroundColor = UIColor(displayP3Red: 0.8, green: 0.8, blue: 0.8, alpha: 0.9)
+        settingsScroll.backgroundColor = UIColor(red: CGFloat(0.9), green: CGFloat(0.9), blue: CGFloat(0.9), alpha: 1.0)
         doneButton.isEnabled = false
     }
     
@@ -541,11 +534,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Counters")
         request.returnsObjectsAsFaults = false
         do {
-            var result = try! context?.fetch(request) as! [NSManagedObject]
-            
-            let savedVar = result[index]
-            print(savedVar)
-        
             if initialize {
                 do {
                     var result = try context?.fetch(request) as! [NSManagedObject]
@@ -641,8 +629,8 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        updateDisplaySet(initialize: false)
-        saveData()
+//        updateDisplaySet(initialize: false)
+//        saveData()
         return pickerData[component][row]
     }
     

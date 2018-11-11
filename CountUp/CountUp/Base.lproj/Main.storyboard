@@ -306,8 +306,9 @@
                                     <barButtonItem width="17" style="plain" systemItem="fixedSpace" id="PvB-ht-lkq"/>
                                     <barButtonItem style="plain" id="Dlc-t2-LU2">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xr6-Ej-cEe">
-                                            <rect key="frame" x="33" y="5.5" width="46" height="33"/>
+                                            <rect key="frame" x="33" y="5" width="46" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Back"/>
                                             <connections>
                                                 <action selector="backButton" destination="Wr5-AF-ec8" eventType="touchUpInside" id="z6V-sY-LxZ"/>
