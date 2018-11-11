@@ -18,7 +18,6 @@ import CoreData
 
 
 class EntryScreenController: UIViewController {
-    // Core Data Vars
     var appDelegate : AppDelegate?
     var context : NSManagedObjectContext?
     var entity : NSEntityDescription?
@@ -481,6 +480,24 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     var entity : NSEntityDescription?
     var appDelegate : AppDelegate?
     
+    
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var modifButton: UIButton!
+    
+    @IBAction func modifySettings(_ sender: Any) {
+        settingsScroll.isUserInteractionEnabled = true
+        settingsScroll.backgroundColor = UIColor.white
+        doneButton.isEnabled = true
+        modifButton.isEnabled = false
+    }
+    
+    @IBAction func doneModifSettings() {
+        settingsScroll.isUserInteractionEnabled = false
+        settingsScroll.backgroundColor = UIColor(displayP3Red: 0.8, green: 0.8, blue: 0.8, alpha: 0.9)
+        doneButton.isEnabled = false
+        modifButton.isEnabled = true
+    }
+    
     override func viewDidLoad() {
         print(index)
         
@@ -489,13 +506,11 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         context = appDelegate?.persistentContainer.viewContext
         entity = NSEntityDescription.entity(forEntityName: "Counters", in: (context ?? nil)!)
         
-        // NOTE: AJOUTER Selection auto de la bonne row car sinon
-        // select colonne vide --> valeur nil --> bug
-        
         
         for i in 0...23 {
             hour.append(String(i))
         }
+        print(hour.count)
         for i in 0...59 {
             min.append(String(i))
         }
@@ -505,6 +520,10 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         
         updateDisplaySet(initialize: true)
         
+        // init PickerView state
+        settingsScroll.isUserInteractionEnabled = false
+        settingsScroll.backgroundColor = UIColor(displayP3Red: 0.8, green: 0.8, blue: 0.8, alpha: 0.9)
+        doneButton.isEnabled = false
     }
     
     @IBAction func backButton() {
@@ -535,14 +554,11 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
                     freq = savedVar.value(forKey: "notif_freq") as! String
                     hour = savedVar.value(forKey: "notif_hour") as! Int
                     min = (savedVar.value(forKey: "notif_min") as! Int)
-                    //            let hour = 5
-                    //            let min = 2
                     
                     var indecesFreq = ["Daily": 0, "Weekly": 1, "Monthly": 2]
                     settingsScroll.selectRow(indecesFreq[freq] ?? 0, inComponent: 0, animated: true)
                     settingsScroll.selectRow(hour+1, inComponent: 1, animated: true)
                     settingsScroll.selectRow(min+1, inComponent: 2, animated: true)
-                    
                 }
                 catch {
                     print("Error while initializing display of couter")
@@ -550,8 +566,17 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
             }
             else {
                 freq = pickerData[0][settingsScroll.selectedRow(inComponent: 0)]
-                hour = Int(pickerData[1][settingsScroll.selectedRow(inComponent: 1)]) ?? 8
-                min = Int(pickerData[2][settingsScroll.selectedRow(inComponent: 2)]) ?? 0
+                hour = Int(pickerData[1][settingsScroll.selectedRow(inComponent: 1)]) ?? -1
+                min = Int(pickerData[2][settingsScroll.selectedRow(inComponent: 2)]) ?? -1
+                
+                if hour == -1 {
+                    hour = 0
+                    settingsScroll.selectRow(1, inComponent: 1, animated: true)
+                }
+                if min == -1 {
+                    min = 0
+                    settingsScroll.selectRow(1, inComponent: 2, animated: true)
+                }
             }
             let time = freq + " reminders at " + time_helper(hour: hour, min: min)
             currentSettings.text = time
@@ -559,23 +584,23 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     func time_helper(hour: Int, min: Int) -> String {
-        var hr = String(hour)
-        var minute = String(min%12)
+        let twelve = (hour != 0 && hour != 12)
+        var hr = twelve ? String(hour%12) : String(12)
+        var minute = String(min)
         var suffix = "am"
         
-        if (hour<10) {
+        if (hour<10 && hour>0) {
             hr = "0"+hr
         } else if (hour==0) {
             hr = "12"
         }
-        if (min%12 < 10) {
+        if (min < 10) {
             minute = "0"+minute
         }
 
         if (hour>12) {
            suffix = "pm"
         }
-        
         return hr+":"+minute+" "+suffix
     }
     
@@ -593,7 +618,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
             result[index].setValue(notif_freq, forKey: "notif_freq")
             result[index].setValue(notif_hour, forKey: "notif_hour")
             result[index].setValue(notif_min, forKey: "notif_min")
-            
         }
         catch {
             print("Probably indexing problem with saveData in counter screen")
@@ -605,7 +629,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
             print("Failed saving")
         }
     }
-    
     
     // for scroll view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -620,7 +643,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         
         updateDisplaySet(initialize: false)
         saveData()
-//        updateDisplaySet(initialize: false)
         return pickerData[component][row]
     }
     

@@ -327,7 +327,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="KwO-TO-Zju" userLabel="Settings Roll">
-                                <rect key="frame" x="0.0" y="269.5" width="320" height="219.5"/>
+                                <rect key="frame" x="0.0" y="273" width="320" height="216"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HK-Pf-ssI" userLabel="Title">
                                 <rect key="frame" x="0.0" y="77" width="320" height="21"/>
@@ -341,42 +341,52 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modify it:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJm-OO-BSs" userLabel="Description">
-                                <rect key="frame" x="0.0" y="203.5" width="320" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeM-XS-yX6">
+                                <rect key="frame" x="191.5" y="216" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneModifSettings" destination="Wr5-AF-ec8" eventType="touchUpInside" id="HLf-Rd-ITI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIW-Ig-cGL">
+                                <rect key="frame" x="56" y="216" width="108" height="30"/>
+                                <state key="normal" title="Modify Settings"/>
+                                <connections>
+                                    <action selector="modifySettings:" destination="Wr5-AF-ec8" eventType="touchUpInside" id="HwA-Bl-IFC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KwO-TO-Zju" firstAttribute="trailing" secondItem="yrR-me-VXd" secondAttribute="trailing" id="03s-m2-KLc"/>
-                            <constraint firstItem="yrR-me-VXd" firstAttribute="trailing" secondItem="MJm-OO-BSs" secondAttribute="trailing" id="6mL-MK-Vcm"/>
+                            <constraint firstItem="zeM-XS-yX6" firstAttribute="centerX" secondItem="98N-8T-yFR" secondAttribute="centerX" constant="50" id="3QW-IA-BnK"/>
                             <constraint firstItem="8HK-Pf-ssI" firstAttribute="top" secondItem="ABP-uH-TGe" secondAttribute="bottom" constant="12" id="7Cy-lw-JMm"/>
+                            <constraint firstItem="pIW-Ig-cGL" firstAttribute="top" secondItem="6cu-Jv-31C" secondAttribute="bottom" constant="72.5" id="8VS-Tr-1H8"/>
                             <constraint firstAttribute="trailing" secondItem="ABP-uH-TGe" secondAttribute="trailing" id="9Zo-8w-Gz6"/>
+                            <constraint firstItem="pIW-Ig-cGL" firstAttribute="centerX" secondItem="98N-8T-yFR" secondAttribute="centerX" constant="-50" id="Dnl-PP-tjI"/>
                             <constraint firstItem="yrR-me-VXd" firstAttribute="trailing" secondItem="6cu-Jv-31C" secondAttribute="trailing" id="FU3-be-TrR"/>
                             <constraint firstItem="ABP-uH-TGe" firstAttribute="top" secondItem="yrR-me-VXd" secondAttribute="top" id="HSI-J0-K94"/>
+                            <constraint firstItem="KwO-TO-Zju" firstAttribute="top" secondItem="zeM-XS-yX6" secondAttribute="bottom" constant="27" id="Kid-FV-Y5F"/>
                             <constraint firstItem="KwO-TO-Zju" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="M06-7P-fDW"/>
                             <constraint firstItem="ABP-uH-TGe" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="Nxc-tb-iYV"/>
                             <constraint firstItem="yrR-me-VXd" firstAttribute="trailing" secondItem="8HK-Pf-ssI" secondAttribute="trailing" id="RA4-mY-qPC"/>
                             <constraint firstItem="HkL-Z1-rdM" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="RLc-Cg-lXn"/>
-                            <constraint firstItem="MJm-OO-BSs" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="beV-6u-Yeb"/>
+                            <constraint firstItem="zeM-XS-yX6" firstAttribute="top" secondItem="6cu-Jv-31C" secondAttribute="bottom" constant="72.5" id="Zqf-BU-B3H"/>
                             <constraint firstItem="HkL-Z1-rdM" firstAttribute="bottom" secondItem="yrR-me-VXd" secondAttribute="bottom" id="cJe-gE-NWN"/>
                             <constraint firstItem="8HK-Pf-ssI" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="fBA-yu-KEA"/>
-                            <constraint firstItem="MJm-OO-BSs" firstAttribute="trailing" secondItem="yrR-me-VXd" secondAttribute="trailing" id="gFN-78-SpN"/>
-                            <constraint firstItem="MJm-OO-BSs" firstAttribute="top" secondItem="6cu-Jv-31C" secondAttribute="bottom" constant="60" id="gG9-gk-bXC"/>
                             <constraint firstItem="8HK-Pf-ssI" firstAttribute="centerX" secondItem="98N-8T-yFR" secondAttribute="centerX" id="ifQ-FN-b2j"/>
-                            <constraint firstItem="KwO-TO-Zju" firstAttribute="top" secondItem="MJm-OO-BSs" secondAttribute="bottom" constant="45" id="oPx-wc-eJr"/>
                             <constraint firstItem="HkL-Z1-rdM" firstAttribute="trailing" secondItem="yrR-me-VXd" secondAttribute="trailing" id="pWo-7n-2nA"/>
                             <constraint firstItem="6cu-Jv-31C" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="qwT-Dw-VAc"/>
+                            <constraint firstItem="KwO-TO-Zju" firstAttribute="top" secondItem="pIW-Ig-cGL" secondAttribute="bottom" constant="27" id="v3q-Nk-FGF"/>
                             <constraint firstItem="6cu-Jv-31C" firstAttribute="top" secondItem="8HK-Pf-ssI" secondAttribute="bottom" constant="25" id="vPF-ae-r4g"/>
-                            <constraint firstItem="MJm-OO-BSs" firstAttribute="leading" secondItem="yrR-me-VXd" secondAttribute="leading" id="wij-2Q-JdF"/>
                             <constraint firstItem="HkL-Z1-rdM" firstAttribute="top" secondItem="KwO-TO-Zju" secondAttribute="bottom" constant="35" id="zSf-Bs-voV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yrR-me-VXd"/>
                     </view>
                     <connections>
                         <outlet property="currentSettings" destination="6cu-Jv-31C" id="KbS-iY-6Ox"/>
+                        <outlet property="doneButton" destination="zeM-XS-yX6" id="hFP-Fn-fBl"/>
+                        <outlet property="modifButton" destination="pIW-Ig-cGL" id="eiO-hl-wGt"/>
                         <outlet property="settingsScroll" destination="KwO-TO-Zju" id="3xV-c2-ZuL"/>
                     </connections>
                 </viewController>
