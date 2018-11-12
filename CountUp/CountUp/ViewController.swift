@@ -9,9 +9,10 @@
 import UIKit
 import CoreData
 
-// figure out:
-
-
+// TO DO:
+// - add change and done button used in settings view for increment picker view
+// - add loading screen and logo for app
+// - figure out firebase thing
 
 
 class EntryScreenController: UIViewController {
