@@ -11,11 +11,7 @@ import CoreData
 
 // figure out:
 
-// TO DO
-// add reset functionality with core data
-// Add method used for picker view in settings screen for
-// coumter screen (picker view not accurate)
-// see creating of accounts with firebase an ios app-
+
 
 
 class EntryScreenController: UIViewController {
@@ -638,7 +634,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-//        updateDisplaySet(initialize: false)
 //        saveData()
         return pickerData[component][row]
     }
