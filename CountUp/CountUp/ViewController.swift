@@ -15,7 +15,7 @@ import CoreData
 // add reset functionality with core data
 // Add method used for picker view in settings screen for
 // coumter screen (picker view not accurate)
-// see creating of accounts with firebase an ios app
+// see creating of accounts with firebase an ios app-
 
 
 class EntryScreenController: UIViewController {
@@ -203,7 +203,6 @@ class EntryScreenController: UIViewController {
 
         if nbrStacks==0 { // if no element saved in CoreData, add default one
             NewCounterHelper()
-            print("nbrStacks 0 hit")
         }
         
     }
@@ -233,16 +232,15 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     }
     
     @IBAction func DeleteCounter() {
-        print("should delete")
         deleteCounterHelper()
     }
     
     @IBOutlet weak var limitField: UITextField!
     
     
-    @IBAction func accessSettings(_ sender: Any) {
+    @IBAction func accessSettings() {
         let VC = self.storyboard?.instantiateViewController(withIdentifier: "settings screen") as! SettingsController
-        
+
         VC.index = self.index
         self.present(VC, animated: true, completion: nil)
     }
@@ -280,6 +278,7 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
         checkCompleted()
     }
     
+    
     @IBAction func ResetValue() {
         Stepper.value = 0
         CountDisplay.text = "0"
@@ -287,6 +286,7 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
         saveData()
         checkCompleted()
     }
+    
     @IBOutlet weak var PickIncrement: UIPickerView!
     var pickerData: [String] = [String]()
 
@@ -337,8 +337,8 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     func checkCompleted() {
         if let textVal: String = CountDisplay.text {
             if let textLim : String = limitField.text {
-                let val = Int(textVal)!
-                let lim = Int(textLim)!
+                let val = Int(textVal) ?? 0
+                let lim = Int(textLim) ?? 15
                 
                 if (val >= lim) {
                     view.backgroundColor = UIColor( red: CGFloat(200/255.0), green: CGFloat(200/255.0), blue: CGFloat(200/255.0), alpha: CGFloat(1.0))
@@ -407,9 +407,17 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
         request.returnsObjectsAsFaults = false
         
         do {
-            var result = try context?.fetch(request) as! [NSManagedObject]
-            let currCounter = result[index]
-            context?.delete(currCounter)
+            let result = try context?.fetch(request) as! [NSManagedObject]
+            
+            if index < result.count-1 {
+                for i in index...result.count-2 {
+                    context?.delete(result[i])
+                    context?.insert(result[i+1])
+                }
+            }
+            context?.delete(result[result.count-1])
+
+            try context?.save()
             
             let VC = self.storyboard?.instantiateViewController(withIdentifier: "firstScreen") as! EntryScreenController
             self.present(VC, animated: true, completion: nil)
@@ -497,8 +505,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     override func viewDidLoad() {
-        print(index)
-        
         // loading current settings
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         context = appDelegate?.persistentContainer.viewContext
@@ -507,7 +513,6 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
         for i in 0...23 {
             hour.append(String(i))
         }
-        print(hour.count)
         for i in 0...59 {
             min.append(String(i))
         }
@@ -590,7 +595,7 @@ class SettingsController: UIViewController, UIPickerViewDataSource, UIPickerView
             minute = "0"+minute
         }
 
-        if (hour>12) {
+        if (hour>=12) {
            suffix = "pm"
         }
         return hr+":"+minute+" "+suffix
