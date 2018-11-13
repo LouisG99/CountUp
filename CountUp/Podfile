@@ -11,6 +11,7 @@ target 'CountUp' do
   target 'CountUpTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Firebase/Core'
   end
 
 end
