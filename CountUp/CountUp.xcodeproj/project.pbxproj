@@ -13,8 +13,8 @@
 		0C1CFF83214B015F00B59277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CFF82214B015F00B59277 /* Assets.xcassets */; };
 		0C1CFF86214B015F00B59277 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C1CFF84214B015F00B59277 /* LaunchScreen.storyboard */; };
 		0C1CFF91214B016000B59277 /* CountUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1CFF90214B016000B59277 /* CountUpTests.swift */; };
-		0C1CFF9E214B103D00B59277 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1CFF9D214B103D00B59277 /* Counter.swift */; };
-		0C1CFFA2214B120600B59277 /* CountValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1CFFA1214B120600B59277 /* CountValue.swift */; };
+		0C2524E7219AB1F2005C7A93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C2524E6219AB1F1005C7A93 /* GoogleService-Info.plist */; };
+		0C2524E8219AB1F2005C7A93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C2524E6219AB1F1005C7A93 /* GoogleService-Info.plist */; };
 		0C44BAF2217BC74F007FC623 /* CounterData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C44BAF0217BC74F007FC623 /* CounterData.xcdatamodeld */; };
 		4C72AE6E94D7B3D5206EA837 /* Pods_CountUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D088B217B0EB9F56B9920 /* Pods_CountUp.framework */; };
 		7C502A4500B2926AF1B8D9AC /* Pods_CountUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B4105307B8C04976A32E87 /* Pods_CountUpTests.framework */; };
@@ -42,8 +42,7 @@
 		0C1CFF8C214B016000B59277 /* CountUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C1CFF90214B016000B59277 /* CountUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUpTests.swift; sourceTree = "<group>"; };
 		0C1CFF92214B016000B59277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0C1CFF9D214B103D00B59277 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
-		0C1CFFA1214B120600B59277 /* CountValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountValue.swift; sourceTree = "<group>"; };
+		0C2524E6219AB1F1005C7A93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C44BAF1217BC74F007FC623 /* CounterData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CounterData.xcdatamodel; sourceTree = "<group>"; };
 		257A6DBD2E76C2F6AA128D87 /* Pods-CountUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountUpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountUpTests/Pods-CountUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		8247C70D8F602D9EA7ADCCBE /* Pods-CountUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountUp/Pods-CountUp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,12 +97,11 @@
 				0C1CFF7B214B015B00B59277 /* AppDelegate.swift */,
 				0C1CFF7D214B015B00B59277 /* ViewController.swift */,
 				0C44BAF0217BC74F007FC623 /* CounterData.xcdatamodeld */,
-				0C1CFFA1214B120600B59277 /* CountValue.swift */,
 				0C1CFF7F214B015B00B59277 /* Main.storyboard */,
 				0C1CFF82214B015F00B59277 /* Assets.xcassets */,
 				0C1CFF84214B015F00B59277 /* LaunchScreen.storyboard */,
 				0C1CFF87214B015F00B59277 /* Info.plist */,
-				0C1CFF9D214B103D00B59277 /* Counter.swift */,
+				0C2524E6219AB1F1005C7A93 /* GoogleService-Info.plist */,
 			);
 			path = CountUp;
 			sourceTree = "<group>";
@@ -225,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C1CFF86214B015F00B59277 /* LaunchScreen.storyboard in Resources */,
+				0C2524E7219AB1F2005C7A93 /* GoogleService-Info.plist in Resources */,
 				0C1CFF83214B015F00B59277 /* Assets.xcassets in Resources */,
 				0C1CFF81214B015B00B59277 /* Main.storyboard in Resources */,
 			);
@@ -234,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C2524E8219AB1F2005C7A93 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,10 +340,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C1CFF7E214B015B00B59277 /* ViewController.swift in Sources */,
-				0C1CFFA2214B120600B59277 /* CountValue.swift in Sources */,
 				0C44BAF2217BC74F007FC623 /* CounterData.xcdatamodeld in Sources */,
 				0C1CFF7C214B015B00B59277 /* AppDelegate.swift in Sources */,
-				0C1CFF9E214B103D00B59277 /* Counter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
