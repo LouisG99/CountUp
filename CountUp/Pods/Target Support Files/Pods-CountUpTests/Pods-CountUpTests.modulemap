@@ -1,6 +1,0 @@
-framework module Pods_CountUpTests {
-  umbrella header "Pods-CountUpTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
