@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-//import Firebase
+import Firebase
 
 // TO DO:
 // - add change and done button used in settings view for increment picker view
