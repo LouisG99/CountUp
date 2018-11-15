@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GMR-3i-VEJ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -85,9 +85,19 @@
                                     <constraint firstAttribute="height" constant="44" id="6zf-bB-KPU"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem style="plain" id="IFo-yH-MFm">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="10P-Or-Roh">
+                                            <rect key="frame" x="16" y="7" width="36" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="temp"/>
+                                            <connections>
+                                                <segue destination="GMR-3i-VEJ" kind="show" id="7wg-Pn-erb"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" id="COT-nf-roJ">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MeV-Fh-lxc">
-                                            <rect key="frame" x="16" y="7" width="288" height="30"/>
+                                            <rect key="frame" x="62" y="7" width="242" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="New Counter"/>
                                             <connections>
@@ -414,5 +424,79 @@
             </objects>
             <point key="canvasLocation" x="1788.75" y="35.91549295774648"/>
         </scene>
+        <!--Login Screen-->
+        <scene sceneID="e6V-Ud-Pk7">
+            <objects>
+                <viewController title="Login Screen" id="GMR-3i-VEJ" customClass="LoginController" customModule="CountUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oXj-xg-WB8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CountUp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wo0-nb-bAi" userLabel="Logo">
+                                <rect key="frame" x="0.0" y="20" width="320" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="bP0-FV-21V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.99404761900000005" green="0.9880952381" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iW6-ad-chn">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xlk-cL-30c"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" id="fug-f5-Sio">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1NY-xZ-e7p">
+                                            <rect key="frame" x="16" y="7" width="288" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="temp link"/>
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="Wr2-sU-msQ"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LID-Ue-LSq">
+                                <rect key="frame" x="100" y="146" width="120" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Local Storage">
+                                    <color key="titleColor" red="0.64394423204345974" green="0.63265661844147203" blue="0.68795639215992188" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mv8-54-Jbt">
+                                <rect key="frame" x="97.5" y="336" width="125" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cloud Storage">
+                                    <color key="titleColor" red="0.64394423199999995" green="0.63265661839999998" blue="0.68795639220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wo0-nb-bAi" secondAttribute="trailing" id="Dww-1Q-Ks9"/>
+                            <constraint firstItem="wo0-nb-bAi" firstAttribute="leading" secondItem="oXj-xg-WB8" secondAttribute="leading" id="KL0-S5-SD0"/>
+                            <constraint firstItem="iW6-ad-chn" firstAttribute="trailing" secondItem="wo0-nb-bAi" secondAttribute="trailing" id="KW3-Zt-Nhv"/>
+                            <constraint firstItem="LID-Ue-LSq" firstAttribute="centerX" secondItem="oXj-xg-WB8" secondAttribute="centerX" id="Qsv-DX-NN6"/>
+                            <constraint firstItem="LID-Ue-LSq" firstAttribute="centerY" secondItem="oXj-xg-WB8" secondAttribute="centerY" constant="-120" id="SLF-yQ-eZP"/>
+                            <constraint firstItem="mv8-54-Jbt" firstAttribute="centerY" secondItem="oXj-xg-WB8" secondAttribute="centerY" constant="70" id="d8P-9p-EZg"/>
+                            <constraint firstItem="iW6-ad-chn" firstAttribute="leading" secondItem="wo0-nb-bAi" secondAttribute="leading" id="ds8-lD-q5Q"/>
+                            <constraint firstItem="mv8-54-Jbt" firstAttribute="centerX" secondItem="oXj-xg-WB8" secondAttribute="centerX" id="kMW-pU-Czg"/>
+                            <constraint firstItem="wo0-nb-bAi" firstAttribute="top" secondItem="eKJ-UA-Doy" secondAttribute="top" id="nmk-Dv-wge"/>
+                            <constraint firstItem="iW6-ad-chn" firstAttribute="bottom" secondItem="eKJ-UA-Doy" secondAttribute="bottom" id="qh5-uu-92T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eKJ-UA-Doy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mxi-Sv-PIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1071" y="36"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wr2-sU-msQ"/>
+    </inferredMetricsTieBreakers>
 </document>

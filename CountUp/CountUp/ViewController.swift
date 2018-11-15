@@ -11,26 +11,35 @@ import CoreData
 import Firebase
 
 // TO DO:
-// - add loading screen and logo for app
 // - figure out firebase thing
 
 // have 2 buttons when first opening the app to decide between local (coredata)
 // and cloud dtorage (firebase)
 
 
+class LoginController: UIViewController {
+    
+    
+    
+    override func viewDidLoad() {
+        print("Kette")
+    }
+    
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+// MARK: Entry after login
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
 class EntryScreenController: UIViewController {
     var appDelegate : AppDelegate?
     var context : NSManagedObjectContext?
     var entity : NSEntityDescription?
     
-    
-    
     let subViewHeight = CGFloat(70.0)
     var count_views = CGFloat(0.0)
-//    let subViewCentered = true
-//    let CounterNameLead = CGFloat(15.0)
-//    let CounterNameTrail = CGFloat(70.0)
-//    let buttonTrail = CGFloat(10.0)
     
     @IBOutlet weak var CountersScroll: UIScrollView!
     @IBOutlet weak var CounterStack: UIStackView!
@@ -123,8 +132,8 @@ class EntryScreenController: UIViewController {
         if limReached {
             see_button.setTitleColor(.green, for: .normal)
         }
+        
         // create constraints
-    
         let leadingLabel = NSLayoutConstraint(item: label, attribute: .leading, relatedBy: .equal, toItem: label_constr, attribute: .leading, multiplier: 1, constant: 0)
         let verticalLabel = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: label_constr, attribute: .centerY, multiplier: 1, constant: subViewHeight * CGFloat(index))
         
@@ -204,7 +213,6 @@ class EntryScreenController: UIViewController {
         if nbrStacks==0 { // if no element saved in CoreData, add default one
             NewCounterHelper()
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
