@@ -18,7 +18,7 @@ import Firebase
 
 
 class LoginController: UIViewController {
-    
+    // make popup for login when click "Cloud storage" on entry screen
     
     
     override func viewDidLoad() {
