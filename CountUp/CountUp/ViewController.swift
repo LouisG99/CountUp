@@ -11,7 +11,6 @@ import CoreData
 import Firebase
 
 // TO DO:
-// - add change and done button used in settings view for increment picker view
 // - add loading screen and logo for app
 // - figure out firebase thing
 
@@ -225,6 +224,9 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     
     @IBOutlet weak var Stepper: UIStepper!
     
+    @IBOutlet weak var modifyButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
+    
     @IBOutlet weak var IncrementDisplay: UILabel!
     var incrementVal = Int()
     
@@ -234,6 +236,22 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     
     @IBAction func DeleteCounter() {
         deleteCounterHelper()
+    }
+    
+    @IBAction func modifyPickerView() {
+        modifyButton.isHidden = true
+        doneButton.isHidden = false
+        PickIncrement.isUserInteractionEnabled = true
+        PickIncrement.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func donePickerView() {
+        incrementVal = PickIncrement.selectedRow(inComponent: 0) + 1
+        updateIncrDisplay()
+        PickIncrement.isUserInteractionEnabled = false
+        PickIncrement.backgroundColor = UIColor(red: CGFloat(0.9), green: CGFloat(0.9), blue: CGFloat(0.9), alpha: 1.0)
+        modifyButton.isHidden = false
+        doneButton.isHidden = true
     }
     
     @IBOutlet weak var limitField: UITextField!
@@ -311,6 +329,10 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
         }
         PickIncrement.delegate = self
         PickIncrement.dataSource = self
+        PickIncrement.isUserInteractionEnabled = false
+        PickIncrement.backgroundColor = UIColor(red: CGFloat(0.9), green: CGFloat(0.9), blue: CGFloat(0.9), alpha: 1.0)
+        modifyButton.isHidden = false
+        doneButton.isHidden = true
         
         // dynamic initialization
         CounterTitle.text = counter_name
@@ -448,8 +470,8 @@ class CounterController: UIViewController, UITextFieldDelegate, UIPickerViewData
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        incrementVal = Int(pickerData[row]) ?? 1
-        updateIncrDisplay()
+//        incrementVal = Int(pickerData[row]) ?? 1
+//        updateIncrDisplay()
         return pickerData[row]
     }
     

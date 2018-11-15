@@ -216,6 +216,20 @@
                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="eXX-Fx-G96" userLabel="Picker Increment">
                                 <rect key="frame" x="0.0" y="349" width="320" height="175"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFH-nk-j3G">
+                                <rect key="frame" x="246" y="311" width="48" height="30"/>
+                                <state key="normal" title="Modify"/>
+                                <connections>
+                                    <action selector="modifyPickerView" destination="y9M-lB-fUY" eventType="touchUpInside" id="Lom-8M-fJX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC8-Jn-hhU">
+                                <rect key="frame" x="251.5" y="312" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="donePickerView" destination="y9M-lB-fUY" eventType="touchUpInside" id="Jgz-aV-0LI"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEV-P5-6bR">
                                 <rect key="frame" x="230.5" y="224" width="39" height="30"/>
                                 <state key="normal" title="Reset"/>
@@ -244,8 +258,12 @@
                         <constraints>
                             <constraint firstItem="EGD-ae-LPm" firstAttribute="trailing" secondItem="xbG-5y-rrs" secondAttribute="trailing" id="0FC-Vr-if9"/>
                             <constraint firstItem="vct-yF-1Uh" firstAttribute="top" secondItem="EGD-ae-LPm" secondAttribute="bottom" constant="12" id="1vh-Uj-98A"/>
+                            <constraint firstItem="sC8-Jn-hhU" firstAttribute="top" secondItem="pEV-P5-6bR" secondAttribute="bottom" constant="58" id="4by-Sg-9TC"/>
                             <constraint firstItem="vct-yF-1Uh" firstAttribute="leading" secondItem="xbG-5y-rrs" secondAttribute="leading" constant="15" id="88s-qC-Rhm"/>
+                            <constraint firstItem="RFH-nk-j3G" firstAttribute="centerX" secondItem="dku-Wc-5cn" secondAttribute="centerX" constant="110" id="9VL-0c-tKT"/>
+                            <constraint firstItem="sC8-Jn-hhU" firstAttribute="centerX" secondItem="dku-Wc-5cn" secondAttribute="centerX" constant="110" id="9zo-Yw-Mi3"/>
                             <constraint firstItem="RxB-lN-cYb" firstAttribute="leading" secondItem="xbG-5y-rrs" secondAttribute="leading" constant="85" id="BAa-RR-6H2"/>
+                            <constraint firstItem="RFH-nk-j3G" firstAttribute="top" secondItem="pEV-P5-6bR" secondAttribute="bottom" constant="57" id="BJ9-HH-K5Q"/>
                             <constraint firstItem="3sT-lh-iyF" firstAttribute="top" secondItem="vct-yF-1Uh" secondAttribute="bottom" constant="27" id="BKt-5w-p1T"/>
                             <constraint firstItem="eXX-Fx-G96" firstAttribute="centerX" secondItem="dku-Wc-5cn" secondAttribute="centerX" id="CI4-L4-dMy"/>
                             <constraint firstItem="xbG-5y-rrs" firstAttribute="trailing" secondItem="vct-yF-1Uh" secondAttribute="trailing" constant="15" id="Cun-MJ-wGb"/>
@@ -283,7 +301,9 @@
                         <outlet property="IncrementDisplay" destination="zJx-Lu-ijt" id="qSn-sO-mxC"/>
                         <outlet property="PickIncrement" destination="eXX-Fx-G96" id="2Hn-Hn-Mcn"/>
                         <outlet property="Stepper" destination="Quw-nn-5kP" id="cVh-f3-OGN"/>
+                        <outlet property="doneButton" destination="sC8-Jn-hhU" id="noI-Ht-8lm"/>
                         <outlet property="limitField" destination="4oH-TY-E6b" id="kQh-so-dy8"/>
+                        <outlet property="modifyButton" destination="RFH-nk-j3G" id="OBb-bU-TTS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Apq-kf-QLo" sceneMemberID="firstResponder"/>
