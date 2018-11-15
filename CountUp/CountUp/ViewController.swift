@@ -15,6 +15,9 @@ import Firebase
 // - add loading screen and logo for app
 // - figure out firebase thing
 
+// have 2 buttons when first opening the app to decide between local (coredata)
+// and cloud dtorage (firebase)
+
 
 class EntryScreenController: UIViewController {
     var appDelegate : AppDelegate?
