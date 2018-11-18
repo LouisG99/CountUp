@@ -14,9 +14,9 @@ Here is a preview of the app:
 </p>
   
 <p align="center">
-  <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Settings_Screen.png" width="250"> 
+  <img align="center" src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Settings_Screen.png" width="250"> 
  
-  <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Counter_Screen.png" width="250">
+  <img align="center" src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Counter_Screen.png" width="250">
 </p>
 
 
