@@ -19,14 +19,17 @@ import Firebase
 
 class LoginController: UIViewController {
     // make popup for login when click "Cloud storage" on entry screen
-    
-    
-    override func viewDidLoad() {
-        print("Kette")
+    @IBAction func localStorage() {
+        print("local option selected")
+        
+    }
+    @IBAction func cloudStorage() {
+        print("could option selected")
     }
     
+    override func viewDidLoad() {
+    }
 }
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -219,8 +222,6 @@ class EntryScreenController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
-
-
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 // MARK: Counter Screen

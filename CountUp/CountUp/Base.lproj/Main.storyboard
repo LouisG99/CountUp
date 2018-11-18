@@ -466,6 +466,9 @@
                                 <state key="normal" title="Local Storage">
                                     <color key="titleColor" red="0.64394423204345974" green="0.63265661844147203" blue="0.68795639215992188" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="localStorage" destination="GMR-3i-VEJ" eventType="touchUpInside" id="vSk-7b-12J"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mv8-54-Jbt">
                                 <rect key="frame" x="97.5" y="336" width="125" height="36"/>
@@ -473,6 +476,9 @@
                                 <state key="normal" title="Cloud Storage">
                                     <color key="titleColor" red="0.64394423199999995" green="0.63265661839999998" blue="0.68795639220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="cloudStorage" destination="GMR-3i-VEJ" eventType="touchUpInside" id="urW-Yx-L6o"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
