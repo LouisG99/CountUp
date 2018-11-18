@@ -23,5 +23,4 @@ Here is a preview of the app:
 The app will fetch the right values for the name, the value and the increment of the counter using CoreData. 
 <br>The button "modify" unlocks the picker view to change the value of the increment. The "settings" button leads to the second screen to set preferences for the notifications. 
 
-
-<b>Note:</b> I have not been able to implement the notifications functionalities as an Apple Developer license (which is rather expensive) is necessary to program notifications. However, once an the license obtained, it would be very easy to implement the notifications since the enitre app was designed for that. 
+<br><br><b>Note:</b> I have not been able to implement the notifications functionalities as an Apple Developer license (which is rather expensive) is necessary to program notifications. However, once an the license obtained, it would be very easy to implement the notifications since the enitre app was designed for that. 
