@@ -9,7 +9,7 @@ Here is a preview of the app:
 ## Interface
 
 <b>First screen: scroll view of different counters</b>
-<p sleft="auto" right="auto">
+<p align="center">
   <img align="center" src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/1st_Screen.png" width="250">
   <img align="center" src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Multiple_counters.png" width="250"
 </p>
