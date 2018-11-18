@@ -7,7 +7,14 @@ The idea for this app came from my contact lenses. After 15 days I need to chang
 Here is a preview of the app: 
 
 <b>First screen</b>, Displays every counter you have
+
+<p float="center">
+  <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/1st_Screen.png" width="250" />
+  <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Settings_Screen.png" width="250" /> 
+</p>
+
 <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/1st_Screen.png" width="250">
+
 Once your counter is complete, its appearance will change. You can also create new counters by clicking the button at the bottom of the view. 
 <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Settings_Screen.png" width="250">
 
