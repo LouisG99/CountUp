@@ -85,19 +85,9 @@
                                     <constraint firstAttribute="height" constant="44" id="6zf-bB-KPU"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" id="IFo-yH-MFm">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="10P-Or-Roh">
-                                            <rect key="frame" x="16" y="7" width="36" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="temp"/>
-                                            <connections>
-                                                <segue destination="GMR-3i-VEJ" kind="show" id="7wg-Pn-erb"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" id="COT-nf-roJ">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MeV-Fh-lxc">
-                                            <rect key="frame" x="62" y="7" width="242" height="30"/>
+                                            <rect key="frame" x="16" y="7" width="288" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="New Counter"/>
                                             <connections>
