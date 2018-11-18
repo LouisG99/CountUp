@@ -8,7 +8,7 @@ Here is a preview of the app:
 
 <b>First screen</b>, Displays every counter you have
 
-<p float="center">
+<p>
   <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/1st_Screen.png" width="250">
   <img src="https://github.com/LouisG99/CountUp/blob/master/CountUp/screenshots/Multiple_counters.png" width="250">
 
